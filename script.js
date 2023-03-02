@@ -1,3 +1,5 @@
+
+
 var matrix = []
 var side = 120;
 var grassArr = [];
@@ -91,8 +93,7 @@ function setup() {
 
 
 
-            }
-
+            } 
             for (let k = 0; k < clickCout; k++) {
                 let x = Math.floor(random(size))
                 let y = Math.floor(random(size))
@@ -108,60 +109,20 @@ function setup() {
 
             }
 
+         
+
 
         }
     }
 
-    matrixGenerator(30, 80, 4, 3, 10, 4, 4)
-    var fast = +prompt("какую скорость вы хотите")
-    if (fast == 1) {
-        frameRate(1)
+    matrixGenerator(30, 80, 4, 3, 10, 4, 4 )
+    var fast = +prompt("what speed do you want? (write only a number)") 
+    frameRate(fast)
+    if(fast == ""){
+       alert("not a number")
     }
-    else if (fast == 2) {
-        frameRate(2)
-    }
-    else if (fast == 3) {
-        frameRate(3)
-    }
-    else if (fast == 4) {
-        frameRate(4)
-    }
-    else if (fast == 5) {
-        frameRate(5)
-    }
-    else if (fast == 6) {
-        frameRate(6)
-    }
-    else if (fast == 7) {
-        frameRate(7)
-    }
-    else if (fast == 8) {
-        frameRate(8)
-    }
-    else if (fast == 9) {
-        frameRate(9)
-    }
-    else if (fast == 10) {
-        frameRate(10)
-    }
-    else if (fast == 11) {
-        frameRate(11)
-    }
-    else if (fast == 12) {
-        frameRate(12)
-    }
-    else if (fast == 13) {
-        frameRate(13)
-    }
-    else if (fast == 14) {
-        frameRate(14)
-    }
-    else if (fast == 15) {
-        frameRate(15)
-    } 
-   else{
-    alert("Eror 404 ")
-   }
+
+    
     createCanvas(matrix[0].length * side, matrix.length * side);
     background('#acacac');
     for (var y = 0; y < matrix.length; y++) {
@@ -190,9 +151,12 @@ function setup() {
                 let bari = new Bariq(x, y)
                 bariqArr.push(bari)
             }
-            else if (matrix[y][x] == 7) {
-                let click = new ClickKerpar(x, y)
-                clickArr.push(click)
+            else if (matrix[y][x] == 7) { 
+                let click = new ClickKerpar(x, y) 
+        
+                clickArr.push(click) 
+                
+                
             }
 
         }
@@ -341,6 +305,17 @@ setTimeout(() => {
 }
 
 
+function mouseClicked () {     
+  
+    let y = Math.floor(mouseY/side)
+    let x = Math.floor(mouseX/120)
+    let newObj = new ClickKerpar(x,y)
+    clickArr.push(newObj)
+  } 
+
+
+
+  
 
 
 

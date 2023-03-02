@@ -1,7 +1,8 @@
 
-class ClickKerpar extends AllClasses{
+class ClickKerpar {
   constructor(x, y) {
-    super(x,y)
+    this.x = x 
+    this.y = y
     this.energy = 8;
     this.directions = [];
   }
@@ -19,7 +20,7 @@ class ClickKerpar extends AllClasses{
     }
   }
   move() {
-    if (this.energy > -10) {
+    if (this.energy > -100000) {
       this.getNewCoordinates();
       this.energy--;
       let emptyCells = this.chooseCell(0)
@@ -37,7 +38,6 @@ class ClickKerpar extends AllClasses{
       this.die();
     }
   }
-
   eat() {
     this.getNewCoordinates()
     let grasses = this.chooseCell(1)
@@ -59,9 +59,15 @@ class ClickKerpar extends AllClasses{
       }
     } else {
       this.move()
-    }   
+    }    
+}  
+die() {
+  matrix[this.y][this.x] = 0;
+  for (var i in clickArr) {
+    if (this.x == clickArr[i].x && this.y == clickArr[i].y) {
+      clickArr.splice(i, 1);//[[1,2],[2,3]]
+      break;
+    }
   }
-} 
-function mouseClicked () {     
-  matrix[Math.floor(mouseY/120)][Math.floor(mouseX/120)]=7
-}   
+}
+}
